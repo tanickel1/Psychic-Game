@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Psychic Game
+	</title>
+</head>
+
+<body>
+	<h1>Psychic Game</h1>
+	<p>Guess the Letter I am Thinking Of</p>
+	<p>Wins</p><span id="wins"></span>
+	<p>Losses</p><span id="losses"></span>
+	<p>Guesses Left</p><span id=guessesleft></span>
+	<p>Guesses So Far</p><span id=guessessofar></span>
+
+	<script type="text/javascript">
+
+		var alphabet = ["a" ,"b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+		var wins = 0; 
+
+		var losses = 0; 
+
+		var guessesleft = 10; 
+
+		var guessessofar = 0;
+
+		var winspan = document.getElementById("wins");
+
+      	var lossesspan = document.getElementById("losses");
+
+      	var guessesleftspan = document.getElementById("guessesleft");
+
+      	var guessessofarspan = document.getElementById("guessessofar");
+
+	    document.onkeyup = function(event) {
+
+      	var userGuess = event.key;      
+
+      	var computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
+
+
+      	if (alphabet.includes(userGuess)){
+
+      
+      	alert("Computer guess: " + computerGuess);
+
+      	alert("User Guess: " + userGuess);
+
+    	if (userGuess === computerGuess ){
+    		wins++; 
+    	}
+
+      	else {
+      		losses++;
+      		guessesleft--;
+     	}
+
+     	guessessofar++;
+
+     	if (guessesleft === 0) {
+     		alert("You Loose");
+     		Program.restart();
+     		
+     		
+     	}
+
+
+
+      winspan.textContent = wins;
+
+      lossesspan.textContent = losses;
+
+      guessesleftspan.textContent = guessesleft;
+
+      guessessofarspan.textContent = guessessofar;
+
+
+      }
+    };
+	</script>
+
+</body>
+
+</html>
